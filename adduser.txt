@@ -1,0 +1,6 @@
+su - root
+***enter password***
+useradd <name>
+passwd <name>
+new password : (enter)
+retype new password : (enter)
