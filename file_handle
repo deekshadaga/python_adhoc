@@ -1,0 +1,53 @@
+#!/usr/bin/python3
+'''
+# creating a file 
+f=open("hello.txt","w")
+f.write("hello world this is file writer")
+f.write("\n")
+f.write("hello world")
+f.close()
+
+
+# read option
+
+
+f=open("hello.txt","r")
+data=f.read()
+print(data)
+f.close()
+
+
+
+# read and write both w+
+
+
+f=open("hello.txt","w+")
+#this will create file first
+f.write("hi ")
+f.write("\n")
+f.write("hello")
+f.seek(0) #cursor position
+print(f.read())
+'''
+# read and write both without creating new file 
+f=open("hello.txt","r+")
+#this will create file first
+f.write("bye ")
+#print(f.read())
+#print("jgkreg")
+#f.write("tata")
+#print(f.read())
+f.close()
+
+
+#append
+
+f=open("hello.txt","a")#only append
+f.write("python")
+f.close()
+
+
+
+f=open("hello.txt","a+")#append and read
+f.write("python")
+f.close()
