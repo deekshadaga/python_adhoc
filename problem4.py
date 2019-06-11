@@ -1,5 +1,5 @@
 #!usr/bin/python3
-
+#login to user first
 import os
 
 uname = input("enter username ---> ")
