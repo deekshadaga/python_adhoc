@@ -1,0 +1,30 @@
+pandas
+
+import pandas as pd
+#now loading data from url
+data=pd.read_csv('http://13.234.66.67/summer19/datasets/customer.csv')
+#checking rows and columns
+data.info()
+#printing top 5 rows only 
+data.head()
+#printing top 3 lines
+data.head(3)
+#printing all data
+data
+#any particular column
+data['Age']
+#finding minimum and maximum no
+data['Age'].min()
+data['Age'].max()
+#range of columns
+data.iloc[0,1]
+data.iloc[0:,1]
+data.iloc[0:,1:]
+data.iloc[0:,[1,3]]
+data.iloc[0:,1:3]
+#all description
+data.describe()
+#mean 
+data['Age'].mean()
+#type of data
+type(data)

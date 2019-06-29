@@ -1,0 +1,69 @@
+data visualization
+
+seaborn
+
+import pandas as pd
+#now loading data from url
+data=pd.read_csv('http://13.234.66.67/summer19/datasets/customer.csv')
+#now importing data visualization library
+import seaborn as sb
+#count and plot age column
+sb.countplot(data['Age'])
+#plotting all the columns
+data.hist()
+
+matplotlib
+
+case1
+
+#now importing data visualization library
+import matplotlib.pyplot as plt
+#data is for moto only
+distance=[5,12,20] #this is in km
+time=[2,5,8] #this is time taken by user in hours
+#data is for dee only
+distance1=[5,10,15] #this is in km
+time1=[2,3,6] #this is time taken by user in hours
+#designing x and y axis
+plt.xlabel("distance")
+plt.ylabel("time")
+plt.scatter(distance,time,label="moto performance") #to show dots only
+plt.scatter(distance1,time1,label="dee performance")
+plt.plot(distance,time) #to show lines only
+plt.plot(distance1,time1)
+plt.grid(color='green')
+plt.legend() #to show labels
+plt.show() #showing graph
+
+case 2
+
+#now importing data visualization library
+import matplotlib.pyplot as plt
+#data is for dhoni only
+runs=[5,12,20] #this is in km
+balls=[2,5,8] #this is time taken by user in hours
+#data is for virat only
+run=[5,12,15] #this is in km
+ball=[2,3,6] #this is time taken by user in hours
+#designing x and y axis
+plt.xlabel("runs")
+plt.ylabel("balls")
+plt.bar(runs,balls,label="ms dhoni")
+plt.bar(run,ball,label="virat kohli")
+plt.grid(color='green')
+plt.legend() #to show labels
+plt.show() #showing graph
+
+case 3
+
+import pandas as pd
+#now loading data from url
+data=pd.read_csv('http://13.234.66.67/summer19/datasets/customer.csv')
+#now importing data visualization library
+import matplotlib.pyplot as plt
+#designing x and y axis
+plt.xlabel("gender")
+plt.ylabel("Age")
+plt.bar(data['Genre'],data['Age'])
+plt.grid(color='green')
+plt.show() #showing graph
