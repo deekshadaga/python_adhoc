@@ -1,0 +1,23 @@
+how to connect to a database
+###############################################################
+#!/usr/bin/python3
+
+import mysql.connector as mysql
+# RDS information
+u=''
+p=''
+db=''
+h=''
+
+# now connecting
+conn=mysql.connect(user=u,password=p,database=db,host=h)
+# now generating a sql language cursor
+cur=conn.cursor()
+
+# now we can write sql query
+cur.execute("show tables;")
+
+# now printing results
+print(cur.fetchall())
+# closing connection
+conn.close()
