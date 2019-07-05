@@ -1,0 +1,33 @@
+# to search pyspark in spark directory
+!sudo install findspark
+import findspark
+# locate directory of spark
+findspark.init('/home/ec2-user/spark24')
+import pyspark
+dir(pyspark)
+# spark core library import
+from pyspark import SparkContext
+sc=SparkContext() #calling sparkcontext function
+# generating sample data
+data=["hello","world","this","is", "pyspark"]
+# we can load a file also
+frdd=sc.textFile('file_path eg-/home/ec2-user/a.txt') #frdd=first rdd
+type(frdd) #text
+# to show first line only
+frdd.first()
+# top 3 lines
+frdd.take(3)
+# complete file data
+frdd.collect()
+# to count total no. of lines
+frdd.count()
+# to convert list or tuple data into RDD
+newrdd=sc.parallelize(data)
+# to show difference between file and list data
+newrdd.first()
+newrdd.take(3)
+newrdd.collect()
+newrdd.count()
+
+
+
