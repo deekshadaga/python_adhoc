@@ -40,3 +40,16 @@ mapping=datasplit.map(lambda word:(word,1))
 w_count=mapping.reduceByKey(lambda a,b:a+b)
 #print
 w_count.take(50)
+import matplotlib.pyplot as plt
+w=[]
+c=[]
+for i in w_count.take(50):
+  w.append(i[0])
+  c.append(i[1])
+  # now plotting the graph
+plt.figure(figsize=(10,12))
+plt.xlabel("words")
+plt.ylabel("count")
+plt.bar(w,c)
+#now as pie chart
+plt.pie(c,labels=w,autopct='%.2f')
