@@ -36,3 +36,7 @@ datasplit=frdd.flatMap(lambda line:line.split(" "))
 #datasplit=[line for line in frdd line.split(" ")]
 # now time for maping words as per second rdd
 mapping=datasplit.map(lambda word:(word,1))
+#time for reducing RDD
+w_count=mapping.reduceByKey(lambda a,b:a+b)
+#print
+w_count.take(50)
