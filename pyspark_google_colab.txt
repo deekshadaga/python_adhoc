@@ -29,3 +29,10 @@ srdd.first() #to print very first line from second datasource
 #to print few lines
 frdd.take(3)
 frdd.take(50)
+#to count words we need to apply split in all data
+datasplit=frdd.flatMap(lambda line:line.split(" ")) 
+# here datasplit is rdd second
+#for line in frdd that is :
+#datasplit=[line for line in frdd line.split(" ")]
+# now time for maping words as per second rdd
+mapping=datasplit.map(lambda word:(word,1))
