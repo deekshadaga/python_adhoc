@@ -1,0 +1,31 @@
+pyspark in google colab
+
+#pyspark and findspark installation
+!pip3 install findspark pyspark
+import findspark
+!wget http://13.234.66.67/summer19/bigdata/spark-2.4.0-bin-hadoop2.7.tgz
+!tar -xvzf spark-2.4.0-bin-hadoop2.7.tgz
+import findspark
+#loading driver of pyspark
+findspark.init('spark-2.4.0-bin-hadoop2.7')
+#now we can import pyspark 
+from pyspark import SparkContext
+# calling sparkcontext
+sc=SparkContext()
+# now loading a file from url to create first rdd
+!wget http://3.90.19.144/data.txt
+frdd=sc.textFile('data.txt')
+type(frdd)
+
+#lets create a list
+x=["hello","world","this","is","spark"]
+type(x)
+#transforming list data into rdd
+srdd=sc.parallelize(x)
+type(srdd)
+#some basic operations in spark
+frdd.first() #to print very first line from first datasource
+srdd.first() #to print very first line from second datasource
+#to print few lines
+frdd.take(3)
+frdd.take(50)
