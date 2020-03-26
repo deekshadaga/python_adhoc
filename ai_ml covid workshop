@@ -1,0 +1,117 @@
+#linux can bu used too on colab
+!cat /etc/issue
+!cal
+!free -m
+
+#############################################################################################################################
+
+#data visualization
+
+#matplotib is similar to matlab
+import matplotlib.pyplot as plt
+
+x=[2,9,3,7]
+y=[7,15,5,9]
+plt.xlabel('Distance')# x-axis
+plt.ylabel('Time')# y-axis
+plt.plot(x,y,label='railway track')# this will draw a line
+plt.scatter(x,y,s=100,label='railway station',marker='^',color='red')# this will draw points , s sets the size in mm of points,marker-->*,^
+plt.bar(x,y,label='height of railway station')#to draw bar charts
+plt.grid(color='green')# this will draw a grid
+plt.legend()#it will show the labels in the plot
+plt.show()# it will draw graph
+
+
+# this will be another example of cricket data visualization
+players=['dhoni','virat','rohit','sir jad']
+scores=[120,140,180,89]
+#now plotting it
+plt.xlabel('players')
+plt.ylabel('scores')
+plt.bar(players,scores,label='2020 score of indian cricket team')
+plt.grid(color='green')
+plt.legend()
+plt.show()
+
+
+# this will be another example of cricket data visualization in pie chart
+players=['dhoni','virat','rohit','sir jad']
+scores=[120,140,180,89]
+#now plotting it
+plt.xlabel('players')
+plt.ylabel('scores')
+plt.pie(scores,labels=players,explode=(0,0,0.2,0),shadow=True,autopct='%1.1ff%%')
+plt.legend()
+plt.show()
+
+#############################################################################################################################
+
+#webscrapping without data clean
+
+from urllib import request #for downloading data from url
+from bs4 import BeautifulSoup # for souping
+#pointing to url
+url='https://en.wikipedia.org/wiki/Machine_learning'
+htmldata=request.urlopen(url)
+#print(htmldata.info)
+#htmldata.read()
+soupdata=BeautifulSoup(htmldata,'html5lib')#html data,html parser - is a collection of html tags that can scrape data from particular tag like h1,a,p etc
+print(soupdata)
+#now selecting a particular tag for data scrape 
+ptagdata=soupdata.findAll('p')#any tag can be taken
+print(ptagdata)
+for i in ptagdata:
+    print(i)
+#getting data in text format from html
+import time
+mydata=''
+for i in ptagdata:
+    mydata+=i.text
+print(mydata)
+
+###########################################################################################################################
+
+#data cleaning -regex or nlp
+
+#regex-to remove the unwanted data from here
+
+import re
+clean_data=re.sub(r'\[[0-9]*\]',' ',mydata) # removes 0 or more times numbers appearing in mydata
+clean_data=re.sub(r'\s+',' ',clean_data)#remove 1 or more white spaces with single white space
+clear_data=re.sub(r'[^a-zA-Z]',' ',clean_data)# remove single character from starting of the line
+clean_data=re.sub(r'\s+',' ',clean_data)#remove 1 or more white spaces with single white space again
+print(clean_data)
+print(type(clean_data))
+
+#############################################################################################################
+
+#deep learning with python :
+#libraries/modules: tensorflow,pytorch,keras
+#text processing by any natural language processing tool like nlp
+#nlp(natural language processing) -> nlg(natural language generation) -> nlu(natural language understanding)
+#ncp- nltk (natural language tool kit),spacy,textblob are python based library
+#!pip install nltk (not required in colab but still if required)
+
+#deal with data by using nltk 
+
+import nltk
+#downloading all dictionary for computer
+nltk.download('all')
+
+#using nlp we can count words and visualize,summarize data,know the sentiment,recommendations can be made etc
+#list are also called token in nlp as it is comma seperated words
+freq_data=nltk.FreqDist(newdata)
+freq_data.plot(20)#20 most repeated keywords,called tokeenization
+
+#remove unwanted data
+#remove stop words that are is , am ,the,a are etc to get more useful data
+mypuredata=[]
+from nltk.corpus import stopwords
+for i in newdata:
+    if i.lower() not in stopwords.words('english'):
+        mypuredata.append(i)
+print(mypuredata)
+freq_data=nltk.FreqDist(mypuredata)
+freq_data.plot(20)#20 most repeated keywords,called tokeenization
+
+
